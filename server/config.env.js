@@ -10,7 +10,7 @@ const env = require('env-var');
  */
 module.exports = {
   // Server.
-  port: env.get('HELLO_PORT').asInt(),
+  port: env.get('API_PORT').asInt(),
 
   // Log.
   logStream: env.get('LOG_STREAM').asString(),
