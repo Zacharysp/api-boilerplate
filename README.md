@@ -10,9 +10,34 @@ Copy whatever you need.
 
 ## What's included/used
 
-### Docker boxes
+## Dockers
 
-See `/dockers/README.md`.
+- Install and start [Docker for Mac](https://docs.docker.com/docker-for-mac/).
+- For reference see [docker-compose](https://docs.docker.com/compose/reference/overview/).
+
+### Start
+
+```bash
+make docker-start
+```
+
+### Retart
+
+```bash
+make docker-restart
+```
+
+### Shutdown and cleanup
+
+```bash
+make docker-stop
+make docker-flush
+```
+
+## Boxes
+
+- [Couchbase](https://hub.docker.com/_/couchbase/)
+
 
 ### Modules
 

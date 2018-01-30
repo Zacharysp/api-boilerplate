@@ -31,3 +31,13 @@ start-dev:
 start-staging:
 	@NODE_ENV=staging $(DEBUG) $(BIN)/nodemon --config ${NODEMON_CONFIG} .
 .PHONY: start start-dev start-staging
+
+docker-start:
+	@./dockers/start.sh
+docker-stop:
+	@./dockers/stop.sh
+docker-restart:
+	@./dockers/restart.sh
+docker-flush:
+	@./dockers/flush.sh
+.PHONY: docker-start docker-stop docker-restart docker-flush

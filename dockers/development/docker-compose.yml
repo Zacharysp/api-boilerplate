@@ -2,7 +2,7 @@ version: '2.2'
 services:
   couchbase:
     image: 'couchbase:community-4.5.1'
-    container_name: lorem_couchbase
+    container_name: boilerplate_couchbase
     ports:
       - '8091-8094:8091-8094'
       - '11207:11207'
@@ -20,6 +20,6 @@ services:
       timeout: 5s
       retries: 10
     networks:
-      - lorem
+      - api_boilerplate
 networks:
-  lorem: null
+  api_boilerplate: null
