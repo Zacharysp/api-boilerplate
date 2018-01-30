@@ -24,6 +24,11 @@ node_js:
   - "8"
   - "6"
 before_script:
-  - ./dockers/up.sh
+  - make docker-start
+  - make docker-stop # we test the docker-stop and docker-restart with this calls
+  - make docker-restart
 script:
   - make test-coveralls
+after_script:
+  - make docker-stop # after the tests we can test the docker-flush call
+  - make docker-flush
