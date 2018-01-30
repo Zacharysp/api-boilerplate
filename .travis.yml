@@ -18,7 +18,7 @@ services:
 env:
   global:
     - CXX=g++-4.8
-    - NODE_ENV="test"
+    - NODE_ENV="development"
     - DEBUG="lorem:*"
 node_js:
   - "8"
