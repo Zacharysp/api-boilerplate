@@ -29,7 +29,6 @@ Steps:
  const env = require('env-var');
  const DSN = env.get('SENTRY_DSN').asString() // eslint-disable-line
  Raven.config(DSN).install();
- server/middleware/sentry.js
  
  module.exports = function() {
    return Raven.errorHandler();
