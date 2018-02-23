@@ -38,3 +38,11 @@ yarn add --dev eslint eslint-config-wcl-backend
 # Dev
 yarn add --dev coveralls istanbul mocha nodemon should supertest
 ```
+
+## Sentry
+
+To enable sentry error logger, you need to set the `SENTRY_DSN` environment variable.
+
+```
+export SENTRY_DSN=https://token@sentry.com
+```
