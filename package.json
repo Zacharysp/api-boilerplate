@@ -44,6 +44,7 @@
     "loopback-connector": "^4.4.0",
     "loopback-datasource-juggler": "^3.13.0",
     "loopback-extended-lib": "^0.5.2",
+    "raven": "^2.4.1",
     "serve-favicon": "^2.4.5",
     "sliced": "^1.0.1",
     "ssl-root-cas": "^1.2.4",

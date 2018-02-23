@@ -39,6 +39,7 @@
   },
   "files": {},
   "final": {
+    "./middleware/sentry": {},
     "loopback#urlNotFound": {}
   },
   "final:after": {
