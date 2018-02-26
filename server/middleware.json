@@ -39,7 +39,11 @@
   },
   "files": {},
   "final": {
-    "./middleware/sentry": {},
+    "./middleware/sentry": {
+      "params": {
+        "sentryDSN": "${sentryDSN}"
+      }
+    },
     "loopback#urlNotFound": {}
   },
   "final:after": {

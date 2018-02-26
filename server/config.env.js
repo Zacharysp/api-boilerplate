@@ -16,5 +16,8 @@ module.exports = {
   // Log.
   logStream: env.get('LOG_STREAM').asString(),
   syslogHost: env.get('SYSLOG_HOST').asString(),
-  syslogPort: env.get('SYSLOG_PORT').asInt()
+  syslogPort: env.get('SYSLOG_PORT').asInt(),
+
+  // Sentry.
+  sentryDSN: env.get('SENTRY_DSN', '').asString()
 };

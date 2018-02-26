@@ -2,20 +2,18 @@
 
 const app = require('../lib');
 const Raven = require('raven');
-const env = require('env-var');
-const DSN = env.get('SENTRY_DSN', '').asString();
 
 let handler = function() { return function() {}; };
 
-if (DSN !== '' && process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test') {
-  try {
-    Raven.config(DSN).install();
-    handler = function() {
+if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'test') {
+  handler = function(options) {
+    try {
+      Raven.config(options.sentryDSN).install();
       return Raven.errorHandler();
-    };
-  } catch (e) {
-    console.error(`Sentry connection to '${DSN}' failed`);
-  }
+    } catch (e) {
+      console.error(`Sentry configuration failed! Sentry DSN: '${options.sentryDSN}'`);
+    }
+  };
 }
 
 module.exports = handler;
