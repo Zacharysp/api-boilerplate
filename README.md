@@ -20,7 +20,7 @@ See `/dockers/README.md`.
 # Core
 yarn add bluebird debug
 # Config
-yarn add env-var lodash.merge
+yarn add env-var-defaults
 # Core Loopback
 yarn add loopback loopback-extended-lib
 # Core Middlewares
