@@ -1,12 +1,4 @@
 {
-  "initial:before": {
-    "loopback#favicon": {},
-    "./middleware/traceLog": {
-      "params": {
-        "stream": "${logStream}"
-      }
-    }
-  },
   "initial": {
     "helmet#xssFilter": {},
     "helmet#frameguard": {
@@ -30,6 +22,16 @@
   "session": {},
   "auth": {},
   "parse": {},
+  "routes:before": {
+    "./middleware/traceLog": {
+      "paths": [
+        "${restApiRoot}"
+      ],
+      "params": {
+        "stream": "${logStream}"
+      }
+    }
+  },
   "routes": {
     "loopback#rest": {
       "paths": [
