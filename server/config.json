@@ -20,5 +20,6 @@
     "cors": false
   },
   "syslogHost": "localhost",
-  "syslogPort": 514
+  "syslogPort": 514,
+  "syslogProto": "udp"
 }
