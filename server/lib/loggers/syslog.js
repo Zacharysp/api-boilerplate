@@ -14,7 +14,8 @@ module.exports = function(name) {
       options: {
         name: name,
         host: app.get('syslogHost') || 'localhost',
-        port: app.get('syslogPort') || 514
+        port: app.get('syslogPort') || 514,
+        type: app.get('syslogProto' ) || 'udp'
       }
     }
   });
