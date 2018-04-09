@@ -3,6 +3,7 @@
 const debug = require('debug');
 const sliced = require('sliced');
 const lib = require('./');
+const { NAMESPACES } = require('../constants');
 const app = lib.app;
 
 /**
@@ -19,7 +20,7 @@ module.exports = function(options) {
   }
 
   // Will only be used when the `app` is not booted.
-  const toConsole = debug(lib.constants.namespace);
+  const toConsole = debug(NAMESPACES.default);
 
   return function() {
     const args = sliced(arguments);

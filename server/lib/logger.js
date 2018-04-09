@@ -1,6 +1,7 @@
 'use strict';
 
 const lib = require('./');
+const { NAMESPACES } = require('../constants');
 
 /**
  * Build a logger instance.
@@ -17,5 +18,5 @@ module.exports = function(options) {
     throw new Error('bad stream name ' + options.stream);
   }
 
-  return builder(lib.constants.namespace);
+  return builder(NAMESPACES.default);
 };

@@ -53,3 +53,52 @@ Workflow with `npm version`:
 3. Pull all the tags
 4. Run the `npm version [path|minor|major]` command
 5. Push
+
+## WCLError
+
+### Envs
+* `SENTRY_DSN`: Set the sentry DSN to send the error
+
+### User the lib
+`const { WCLError } = lib.utils`
+
+### Usage of the WCLError
+
+```javascript
+
+const httpError = new WCLError('errmessage', {
+  status: 403,
+  code: 1008,
+  isSentry: true // With `isSentry` is true and DSN setted throw node_env this error will be sent do sentry.
+})
+
+// In the remote method to return the error response
+throw httpError.toHttp() // trans to http-error
+
+// Convert common error into WCLError
+const err = new Error('system error')
+
+const httpError = new WCLError(err, {
+  message: 'invalid password', // Will overwrite the error.message
+  userInfo: { // will add extra info
+    username: ole3021,
+    target: www.github.com
+  }
+})
+
+const ERRORS = { // Predifined error
+  LOGIN_ERROR: {
+    status: 401,
+    message: 'invalid to login'
+  }
+}
+
+const templateError = new WCLError(ERRORS.LOGIN_ERROR, {
+  details: [{
+    messsage: 'missing username'
+  }, {
+    message: 'missing pasword'
+  }]
+})
+```
+
