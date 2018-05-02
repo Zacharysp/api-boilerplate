@@ -24,7 +24,10 @@
     "email": "",
     "url": ""
   },
-  "contributors": ["Makara Wang", "Oliver Wang"],
+  "contributors": [
+    "Makara Wang",
+    "Oliver Wang"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Wiredcraft/api-boilerplate.git"
