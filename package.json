@@ -7,9 +7,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "watch": "make watch",
-    "test": "make test",
-    "test-cov": "make test-cov",
+    "watch": "jest --watchAll",
+    "test": "jest --forceExit",
+    "test-cov": "jest --coverage --forceExit",
     "test-coveralls": "make test-coveralls",
     "start": "make start",
     "start-dev": "make start-dev",
@@ -24,7 +24,10 @@
     "email": "",
     "url": ""
   },
-  "contributors": ["Makara Wang", "Oliver Wang"],
+  "contributors": [
+    "Makara Wang",
+    "Oliver Wang"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Wiredcraft/api-boilerplate.git"
@@ -70,6 +73,10 @@
     "prettier": "^1.14.3",
     "should": "^13.2.1",
     "supertest": "^3.0.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "private": true,
   "license": "UNLICENSED",
