@@ -1,9 +1,9 @@
 /* eslint no-console: ["error", { allow: ["log"] }] */
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
-var app = (module.exports = loopback());
+const loopback = require('loopback');
+const boot = require('loopback-boot');
+const app = (module.exports = loopback());
 
 app.start = function() {
   // start the web server
