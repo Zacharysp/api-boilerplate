@@ -1,7 +1,9 @@
 'use strict';
 
-const lib = require('./lib');
-const app = module.exports = lib.app;
+var loopback = require('loopback');
+var boot = require('loopback-boot');
+
+var app = module.exports = loopback();
 
 app.start = function() {
   // start the web server
@@ -18,13 +20,10 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-app.boot(function(err) {
-  if (err) {
-    throw err;
-  }
+boot(app, __dirname, function(err) {
+  if (err) throw err;
 
   // start the server if `$ node server.js`
-  if (require.main === module) {
+  if (require.main === module)
     app.start();
-  }
 });
