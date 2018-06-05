@@ -3,7 +3,6 @@
 require('should');
 
 const lib = require('../lib');
-const app = require('./../server');
 
 describe('The debug', () => {
   let debug;
