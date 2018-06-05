@@ -1,4 +1,4 @@
-/*eslint no-console: ["error", { allow: ["log"] }] */
+/* eslint no-console: ["error", { allow: ["log"] }] */
 'use strict';
 
 var loopback = require('loopback');
