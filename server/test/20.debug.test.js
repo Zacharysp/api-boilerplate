@@ -3,14 +3,9 @@
 require('should');
 
 const lib = require('../lib');
-const app = lib.app;
 
 describe('The debug', () => {
   let debug;
-
-  before((done) => {
-    app.boot(done);
-  });
 
   it('should be there', () => {
     lib.should.have.property('debug').which.is.Function();

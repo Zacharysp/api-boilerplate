@@ -4,14 +4,10 @@ require('should');
 const request = require('supertest');
 
 const lib = require('../lib');
-const app = lib.app;
+const app = require('./../server');
 
 describe('The loggers', () => {
   let logger;
-
-  before((done) => {
-    app.boot(done);
-  });
 
   it('should be there', () => {
     lib.should.have.property('logger').which.is.Function();

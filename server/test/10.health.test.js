@@ -2,15 +2,9 @@
 
 const should = require('should');
 const request = require('supertest');
-
-const lib = require('../lib');
-const app = lib.app;
+const app = require('./../server');
 
 describe('The health API', () => {
-  before((done) => {
-    app.boot(done);
-  });
-
   it('can output', () => {
     return request(app)
       .get('/health')
