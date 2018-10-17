@@ -2,13 +2,14 @@
 
 const expressLogger = require('express-bunyan-logger');
 
-const lib = require('../../lib');
+const { getTransactionId } = require('../../lib/utils');
+const loggerFactory = require('../../lib/logger');
 
 module.exports = function(options) {
   return expressLogger.errorLogger({
-    logger: lib.logger(options),
+    logger: loggerFactory(options),
     immediate: false,
-    genReqId: lib.getTransactionId, // @see middleware/traceLog.js
+    genReqId: getTransactionId(), // @see middleware/traceLog.js
     levelFn
   });
 };

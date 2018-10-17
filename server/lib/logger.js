@@ -1,7 +1,5 @@
 'use strict';
 
-const lib = require('./');
-
 /**
  * Build a logger instance.
  */
@@ -12,10 +10,10 @@ module.exports = function(options) {
     options = { stream: options };
   }
 
-  const builder = lib.loggers[options.stream ? options.stream.toLowerCase() : 'debug'];
+  const builder = require(`./loggers/${options.stream ? options.stream.toLowerCase() : 'debug'}`);
   if (builder == null) {
     throw new Error('bad stream name ' + options.stream);
   }
 
-  return builder(lib.constants.namespace);
+  return builder(options.name || 'myapp');
 };

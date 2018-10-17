@@ -46,7 +46,6 @@
     "loopback": "^3.18.3",
     "loopback-connector": "^4.4.0",
     "loopback-datasource-juggler": "^3.16.0",
-    "loopback-extended-lib": "^0.5.2",
     "serve-favicon": "^2.5.0",
     "sliced": "^1.0.1",
     "ssl-root-cas": "^1.2.5",

@@ -2,15 +2,15 @@
 
 const uuid = require('uuid');
 const expressLogger = require('express-bunyan-logger');
-
-const lib = require('../lib');
+const { getTransactionId } = require('../lib/utils');
+const app = require('../server');
 
 module.exports = function(options) {
   if (options == null) {
     options = {};
   }
-  const logger = lib.logger(options);
-  const debugging = lib.vars.debugging(options.debug);
+  const loggerFactory = require('../lib/logger');
+  const logger = loggerFactory(options);
 
   const attr = options.attributeName || 'transactionId';
   let header = options.header;
@@ -23,22 +23,15 @@ module.exports = function(options) {
   /**
    * Attach a transaction ID to the request, if not there already.
    */
-  const transactionId = function(req, res, next) {
+  const attachTransactionId = function(req, res, next) {
     if (req.headers == null) {
       req.headers = {};
     }
     if (!req.headers[header]) {
-      req.headers[header] = debugging ? 'transaction-id' : uuid.v4();
+      req.headers[header] = uuid.v4();
     }
     req[attr] = req.headers[header];
     return next();
-  };
-
-  /**
-   * Shortcut.
-   */
-  lib.getTransactionId = function(req) {
-    return req[attr];
   };
 
   /**
@@ -47,7 +40,7 @@ module.exports = function(options) {
   const logRequest = expressLogger({
     logger,
     immediate: true,
-    genReqId: lib.getTransactionId,
+    genReqId: getTransactionId(attr),
     excludes: ['res', 'res-headers']
   });
 
@@ -57,8 +50,8 @@ module.exports = function(options) {
   const logResponse = expressLogger({
     logger,
     immediate: false,
-    genReqId: lib.getTransactionId
+    genReqId: getTransactionId(attr)
   });
 
-  return lib.app.loopback.Router().use(transactionId, logRequest, logResponse);
+  return app.loopback.Router().use(attachTransactionId, logRequest, logResponse);
 };
