@@ -1,11 +1,11 @@
 'use strict';
 
-const lib = require('../lib');
+const loggerFactory = require('../lib/logger');
 
 /**
  * Initialize the logger.
  */
 module.exports = function(app) {
   // The logger.
-  app.logger = lib.logger(app.get('logStream'));
+  app.logger = loggerFactory(app.get('logStream'));
 };

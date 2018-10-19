@@ -2,8 +2,7 @@
 
 const Logger = require('bunyan-logger');
 
-const lib = require('../');
-const app = lib.app;
+const app = require('../../server');
 
 module.exports = function(name) {
   return new Logger({

@@ -2,9 +2,6 @@
 
 const strongErrorHandler = require('strong-error-handler');
 
-const lib = require('../../lib');
-const debug = lib.debug('errorHandler');
-
 /**
  * A simple wrapper, removes error stack in some cases.
  *
@@ -15,7 +12,6 @@ module.exports = function(options) {
   if (options == null) {
     options = {};
   }
-  const debugging = lib.vars.debugging(options.debug);
 
   /**
    * The final handler. Not always called as the errors can be handled by another middleware (like
@@ -28,8 +24,7 @@ module.exports = function(options) {
   }));
 
   return function errorHandler(err, req, res, next) {
-    debug(err);
-    if (!debugging) {
+    if (process.env.NODE_ENV === 'production') {
       delete err.stack;
     }
 

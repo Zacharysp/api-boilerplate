@@ -2,25 +2,15 @@
 
 require('should');
 const request = require('supertest');
-
-const lib = require('../lib');
 const app = require('./../server');
+const loggerFactory = require('../lib/logger');
 
 describe('The loggers', () => {
   let logger;
 
-  it('should be there', () => {
-    lib.should.have.property('logger').which.is.Function();
-    lib.should.have.property('loggers').which.is.Object();
-  });
-
   describe('The debug', () => {
-    it('should be there', () => {
-      lib.loggers.should.have.property('debug').which.is.Function();
-    });
-
     it('can build a logger', () => {
-      logger = lib.logger('debug');
+      logger = loggerFactory('debug');
       logger.should.be.Object();
       logger.should.have.property('info').which.is.Function();
     });
@@ -51,12 +41,8 @@ describe('The loggers', () => {
       }
     });
 
-    it('should be there', () => {
-      lib.loggers.should.have.property('ringbuffer').which.is.Function();
-    });
-
     it('can build a logger', () => {
-      logger = lib.logger('ringbuffer');
+      logger = loggerFactory('ringbuffer');
       logger.should.be.Object();
       logger.should.have.property('info').which.is.Function();
       logger.should.have.property('streams').which.is.Array().with.length(1);
@@ -85,12 +71,8 @@ describe('The loggers', () => {
   });
 
   describe('The syslog', () => {
-    it('should be there', () => {
-      lib.loggers.should.have.property('syslog').which.is.Function();
-    });
-
     it('can build a logger', () => {
-      logger = lib.logger('syslog');
+      logger = loggerFactory('syslog');
       logger.should.be.Object();
       logger.should.have.property('info').which.is.Function();
     });
