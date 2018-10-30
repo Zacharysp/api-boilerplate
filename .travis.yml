@@ -22,7 +22,7 @@ env:
     - DEBUG="lorem:*"
 node_js:
   - "8"
-  - "6"
+  - "10"
 before_script:
   - ./dockers/up.sh
 script:
