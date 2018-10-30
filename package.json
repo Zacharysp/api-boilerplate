@@ -24,7 +24,10 @@
     "email": "",
     "url": ""
   },
-  "contributors": ["Makara Wang", "Oliver Wang"],
+  "contributors": [
+    "Makara Wang",
+    "Oliver Wang"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Wiredcraft/api-boilerplate.git"
@@ -64,12 +67,17 @@
     "eslint-plugin-jest": "^21.15.1",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "jest-preset-loopback": "^1.0.0",
     "jsonlint": "paulvollmer/jsonlint#v1.8.2",
     "loopback-component-explorer": "^5.3.0",
     "nodemon": "^1.17.3",
     "prettier": "^1.14.3",
     "should": "^13.2.1",
     "supertest": "^3.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-loopback",
+    "testRegex": "test/.*\\.test\\.js$"
   },
   "private": true,
   "license": "UNLICENSED",

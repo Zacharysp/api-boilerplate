@@ -6,8 +6,8 @@ const lib = require('../../server/lib');
 const app = lib.app;
 
 describe('Logger', () => {
-  beforeAll((done) => {
-    app.boot(done());
+  beforeAll(done => {
+    app.boot(done);
   });
 
   it('should be there', () => {
@@ -147,30 +147,30 @@ describe('Logger', () => {
   });
 
   describe('Global Logger', () => {
-    it.skip('should be there', () => {
-      expect(app.logger).toBeInstanceOf(Object); // TOFIX Undefined app.logger
+    it('should be there', () => {
+      expect(app.logger).toBeDefined();
       expect(app.logger.info).toBeInstanceOf(Function);
     });
 
-    it.skip('can output error', () => {
+    it('can output error', () => {
       const spyGlobalLogger = jest.spyOn(app.logger, 'info');
       app.logger.info(new Error('lorem'));
       expect(spyGlobalLogger).toHaveBeenCalled();
     });
 
-    it.skip('can output string', () => {
+    it('can output string', () => {
       const spyGlobalLogger = jest.spyOn(app.logger, 'info');
       app.logger.info('lorem');
       expect(spyGlobalLogger).toHaveBeenCalled();
     });
 
-    it.skip('can output object', () => {
+    it('can output object', () => {
       const spyGlobalLogger = jest.spyOn(app.logger, 'info');
       app.logger.info({});
       expect(spyGlobalLogger).toHaveBeenCalled();
     });
 
-    it.skip('can output mix info', () => {
+    it('can output mix info', () => {
       const spyGlobalLogger = jest.spyOn(app.logger, 'info');
       app.logger.info('lorem', {});
       expect(spyGlobalLogger).toHaveBeenCalled();

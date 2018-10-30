@@ -5,8 +5,8 @@ const request = require('supertest');
 const lib = require('../../server/lib');
 const app = lib.app;
 
-beforeAll((done) => {
-  app.boot(done());
+beforeAll(done => {
+  app.boot(done);
 });
 
 describe('Test API', () => {

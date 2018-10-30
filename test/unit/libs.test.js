@@ -9,7 +9,7 @@ describe('Lib', () => {
     expect(lib.app).toBeInstanceOf(Function);
   });
 
-  it('should can boot', (done) => {
+  it('should can boot', done => {
     expect(lib.app.boot).toBeInstanceOf(Function);
     lib.app.boot(done());
   });

@@ -1,11 +1,10 @@
 'use strict';
 
-const path = require('path');
 const lib = require('../../server/lib');
 
 describe('Debug', () => {
-  beforeAll((done) => {
-    lib.app.boot(done());
+  beforeAll(done => {
+    lib.app.boot(done);
   });
 
   it('should be there', () => {
