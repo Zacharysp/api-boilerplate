@@ -1,13 +1,7 @@
 'use strict';
 
 const request = require('supertest');
-
-const lib = require('../../server/lib');
-const app = lib.app;
-
-beforeAll(done => {
-  app.boot(done);
-});
+const app = require('../../server/server');
 
 describe('Test API', () => {
   it('should return 204 response', () => {

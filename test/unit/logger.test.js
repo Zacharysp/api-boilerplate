@@ -1,29 +1,14 @@
 'use strict';
 
-const request = require('supertest');
-
-const lib = require('../../server/lib');
-const app = lib.app;
+const app = require('../../server/server');
+const loggerFactory = require('../../server/lib/logger');
 
 describe('Logger', () => {
-  beforeAll(done => {
-    app.boot(done);
-  });
-
-  it('should be there', () => {
-    expect(lib.logger).toBeInstanceOf(Function);
-    expect(lib.loggers).toBeInstanceOf(Object);
-  });
-
   describe('Debug', () => {
     let logger;
 
-    it('should be there', () => {
-      expect(lib.loggers.debug).toBeInstanceOf(Function);
-    });
-
     it('can build a logger', () => {
-      logger = lib.logger('debug');
+      logger = loggerFactory('debug');
 
       // expect(logger).toBeInstanceOf(Object);
       expect(logger.info).toBeInstanceOf(Function);
@@ -66,12 +51,9 @@ describe('Logger', () => {
       if (ringBuffer) ringBuffer.records = [];
     });
 
-    it('should be there', () => {
-      expect(lib.loggers.ringbuffer).toBeInstanceOf(Function);
-    });
-
     it('can build a logger', () => {
-      logger = lib.logger('ringbuffer');
+      logger = loggerFactory('ringbuffer');
+
       // expect(logger).toBeInstanceOf(Object); // TOFIX
       expect(logger.info).toBeInstanceOf(Function);
       expect(logger.streams).toBeInstanceOf(Array);
@@ -107,12 +89,8 @@ describe('Logger', () => {
   describe('Syslog', () => {
     let syslog;
 
-    it('should be there', () => {
-      expect(lib.loggers.syslog).toBeInstanceOf(Function);
-    });
-
     it('can build a logger', () => {
-      syslog = lib.logger('syslog');
+      syslog = loggerFactory('syslog');
       // expect(syslog).toBeInstanceOf(Object); // TOFIX
       expect(syslog.info).toBeInstanceOf(Function);
     });

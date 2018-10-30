@@ -2,16 +2,7 @@
 
 const request = require('supertest');
 
-const lib = require('../../server/lib');
-const app = lib.app;
-
-beforeAll(done => {
-  app.boot(done);
-});
-
-afterAll(() => {
-  app.stop();
-});
+const app = require('../../server/server');
 
 test('health api should return status', () => {
   request(app)
