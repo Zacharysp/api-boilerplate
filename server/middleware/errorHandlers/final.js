@@ -18,10 +18,12 @@ module.exports = function(options) {
    * rendered into a page). Always in debug mode and remove error stack in another way. Never log
    * here as log is done in a previous middleware.
    */
-  const final = strongErrorHandler(Object.assign(options, {
-    log: false,
-    debug: true
-  }));
+  const final = strongErrorHandler(
+    Object.assign(options, {
+      log: false,
+      debug: true
+    })
+  );
 
   return function errorHandler(err, req, res, next) {
     if (process.env.NODE_ENV === 'production') {

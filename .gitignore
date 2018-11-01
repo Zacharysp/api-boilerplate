@@ -1,4 +1,5 @@
 .*
+!.prettierrc
 !.gitkeep
 !.gitignore
 !.npmignore

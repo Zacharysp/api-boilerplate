@@ -40,14 +40,18 @@ yarn add --dev coveralls istanbul mocha nodemon should supertest
 ```
 
 ## Commit
+
 Use [commitlint](https://github.com/marionebl/commitlint) with [@commitlint/config-conventional](https://github.com/marionebl/commitlint/blob/master/@commitlint/config-conventional/index.js)
 for commit lint.
 
 ## How to create changelog
+
 ```
 npm install -g conventional-changelog-cli
 ```
+
 Workflow with `npm version`:
+
 1. Make changes
 2. Commit those changes
 3. Pull all the tags
@@ -55,7 +59,16 @@ Workflow with `npm version`:
 5. Push
 
 ## Enable verbose trace log
+
 see: https://github.com/Wiredcraft/api-boilerplate/issues/54
+
 ```
 VERBOSE_TRACE_LOG=true make test
 ```
+
+## Use the Prettier formatter with IDE
+
+- install the [plugins](https://prettier.io/docs/en/editors.html) for the editor you use.
+- enable `formatting on save` (eg: VScode).
+
+and the file will be formated nicely with a unified style when ever you save the file.

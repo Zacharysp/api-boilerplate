@@ -10,7 +10,7 @@ describe('The health API', () => {
       .get('/health')
       .set('Accept', 'application/json')
       .expect(200)
-      .expect((res) => {
+      .expect(res => {
         should(res).be.an.Object();
         should(res.body).be.an.Object();
         should(res.body.started).be.a.String();

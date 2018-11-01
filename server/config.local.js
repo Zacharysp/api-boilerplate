@@ -11,8 +11,9 @@ module.exports = {
   rootCaFile: env.get('ROOT_CA_FILE').asString(),
 
   // Log.
-  logStream: env.get('LOG_STREAM', [process.env.VERBOSE_TRACE_LOG ? 'debug' : 'file',
-    'debug', 'syslog', 'syslog', 'syslog']).asString(),
+  logStream: env
+    .get('LOG_STREAM', [process.env.VERBOSE_TRACE_LOG ? 'debug' : 'file', 'debug', 'syslog', 'syslog', 'syslog'])
+    .asString(),
   syslogHost: env.get('SYSLOG_HOST').asString(),
   syslogPort: env.get('SYSLOG_PORT').asInt(),
   syslogProto: env.get('SYSLOG_PROTO').asString()

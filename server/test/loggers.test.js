@@ -45,7 +45,10 @@ describe('The loggers', () => {
       logger = loggerFactory('ringbuffer');
       logger.should.be.Object();
       logger.should.have.property('info').which.is.Function();
-      logger.should.have.property('streams').which.is.Array().with.length(1);
+      logger.should.have
+        .property('streams')
+        .which.is.Array()
+        .with.length(1);
       ringbuffer = logger.streams[0].stream;
     });
 
