@@ -1,7 +1,6 @@
 DEBUG = DEBUG=lorem,lorem:*
 BIN = ./node_modules/.bin
-TESTS = server/test/*.test.js
-MOCHA_OPTS = -b --timeout 10000 --reporter spec --exit
+TEST_OPTS = --forceExit
 NODEMON_CONFIG = ./configs/nodemon.json
 
 lint: lint-js lint-json
@@ -14,15 +13,18 @@ lint-json:
 lint-fix:
 	@echo "Linting with fix flag..."
 	@$(BIN)/eslint --fix .
+watch:
+	@echo "Watching changes and testing..."
+	NODE_ENV=test $(BIN)/jest --watchAll
 test: lint
 	@echo "Testing..."
-	@NODE_ENV=test $(DEBUG) $(BIN)/_mocha $(MOCHA_OPTS) $(TESTS)
+	@NODE_ENV=test $(DEBUG) $(BIN)/jest $(TEST_OPTS) 
 test-cov: lint
 	@echo "Testing..."
-	@NODE_ENV=test $(DEBUG) $(BIN)/istanbul cover $(BIN)/_mocha -- $(MOCHA_OPTS) $(TESTS)
+	@NODE_ENV=test $(DEBUG) $(BIN)/jest --coverage $(TEST_OPTS)
 test-coveralls: test-cov
 	@cat ./coverage/lcov.info | $(BIN)/coveralls --verbose
-.PHONY: lint lint-fix test test-cov test-coveralls
+.PHONY: lint lint-fix watch test test-cov test-coveralls
 
 start:
 	@NODE_ENV=production $(DEBUG) $(BIN)/nodemon --config ${NODEMON_CONFIG} .

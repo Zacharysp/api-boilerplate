@@ -7,6 +7,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "watch": "make watch",
     "test": "make test",
     "test-cov": "make test-cov",
     "test-coveralls": "make test-coveralls",
@@ -24,7 +25,8 @@
     "url": ""
   },
   "contributors": [
-    "Makara Wang"
+    "Makara Wang",
+    "Oliver Wang"
   ],
   "repository": {
     "type": "git",
@@ -61,16 +63,21 @@
     "eslint": "^4.12.1",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-wcl-backend": "^0.2.1",
+    "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^0.14.3",
-    "istanbul": "^0.4.5",
+    "jest": "^22.4.3",
+    "jest-preset-loopback": "^1.0.0",
     "jsonlint": "paulvollmer/jsonlint#v1.8.2",
     "loopback-component-explorer": "^5.3.0",
-    "mocha": "^5.0.5",
     "nodemon": "^1.17.3",
     "prettier": "^1.14.3",
     "should": "^13.2.1",
     "supertest": "^3.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-loopback",
+    "testRegex": "test/.*\\.test\\.js$"
   },
   "private": true,
   "license": "UNLICENSED",

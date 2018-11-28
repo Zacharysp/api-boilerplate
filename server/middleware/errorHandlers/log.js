@@ -18,7 +18,7 @@ module.exports = function(options) {
  * This is different with the `defaultLevelFn()`, where the default one sends `error` log whenever
  * there's an `err`, and problem is with the error middleware there's always an `err`.
  */
-function levelFn(status, err) {
+function levelFn(status, err /* eslint-disable-line no-unused-vars */) {
   if (status >= 500) {
     return 'error';
   } else if (status >= 400) {
