@@ -15,31 +15,31 @@ describe('Logger', () => {
     });
 
     it('can output error', () => {
-      const spyDebug = jest.spyOn(logger, 'info');
+      logger.info = jest.fn();
       logger.info(new Error('lorem'));
 
-      expect(spyDebug).toHaveBeenCalled();
+      expect(logger.info).toHaveBeenCalled();
     });
 
     it('can output string', () => {
-      const spyDebug = jest.spyOn(logger, 'info');
+      logger.info = jest.fn();
       logger.info('lorem');
 
-      expect(spyDebug).toHaveBeenCalled();
+      expect(logger.info).toHaveBeenCalled();
     });
 
     it('can output object', () => {
-      const spyDebug = jest.spyOn(logger, 'info');
+      logger.info = jest.fn();
       logger.info({});
 
-      expect(spyDebug).toHaveBeenCalled();
+      expect(logger.info).toHaveBeenCalled();
     });
 
     it('can output mix info', () => {
-      const spyDebug = jest.spyOn(logger, 'info');
+      logger.info = jest.fn();
       logger.info('lorem', {});
 
-      expect(spyDebug).toHaveBeenCalled();
+      expect(logger.info).toHaveBeenCalled();
     });
   });
 
