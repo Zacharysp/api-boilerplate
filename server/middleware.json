@@ -21,6 +21,7 @@
   "auth": {},
   "parse": {},
   "routes:before": {
+    "loopback-healthcheck-middleware": {},
     "./middleware/traceLog": {
       "paths": ["${restApiRoot}"],
       "params": {
