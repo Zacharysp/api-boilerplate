@@ -25,5 +25,16 @@ USER node
 
 EXPOSE 3000
 
-CMD [ "pm2-docker", "--json", "--instances", "0", "server/server.js" ]
+# Capture BUILD params as env
+ARG OMNI_COMPONENT=boilerplate
+ARG OMNI_COMPONENT_VERSION=unknown
+ARG OMNI_COMPONENT_COMMIT=unknown
+ENV OMNI_COMPONENT ${OMNI_COMPONENT}
+ENV OMNI_COMPONENT_VERSION ${OMNI_COMPONENT_VERSION}
+ENV OMNI_COMPONENT_COMMIT ${OMNI_COMPONENT_COMMIT}
+
+# Default instances count to 0 to use as many as there is CPU cores on the host
+ENV PM2_WORKER_INSTANCES 0
+ENV PM2_NAME ${OMNI_COMPONENT}
+CMD [ "sh", "-c", "pm2-runtime --json --name ${PM2_NAME} --instances ${PM2_WORKER_INSTANCES} server/server.js" ]
 
