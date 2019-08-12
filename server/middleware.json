@@ -21,13 +21,7 @@
   "auth": {},
   "parse": {},
   "routes:before": {
-    "loopback-healthcheck-middleware": {},
-    "./middleware/traceLog": {
-      "paths": ["${restApiRoot}"],
-      "params": {
-        "stream": "${logStream}"
-      }
-    }
+    "loopback-healthcheck-middleware": {}
   },
   "routes": {
     "loopback#rest": {
@@ -39,11 +33,6 @@
     "loopback#urlNotFound": {}
   },
   "final:after": {
-    "./middleware/errorHandlers/log": {
-      "params": {
-        "stream": "${logStream}"
-      }
-    },
     "./middleware/errorHandlers/final": {}
   }
 }
